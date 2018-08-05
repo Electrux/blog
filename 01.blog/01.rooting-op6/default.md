@@ -1,0 +1,84 @@
+---
+title: Privacy 01: Rooting OnePlus 6
+---
+
+# Privacy 01: Rooting the (OnePlus 6) android device
+
+> **Note**: The rooting guide is with Linux or Mac as the desktop OS.
+
+## What is rooting?
+
+Android's foundation is built on Linux, therefore, a lot of Linux fundamentals apply directly on Android, which can be utilized by the end user to enhance their Android experience and even improve its security, should they so desire.
+
+In Linux, the _user account_ with most powerful rights - which can control the entire system (and demolish it if the user is not careful) is the **root** user, also known as **super user**. This user account has all the permissions to modify the system as and how the user desires which includes, but is not limited to, altering system files.
+
+So, when we say we are _rooting_ our Android device, what we actually mean is that we are granting ourselves the access to _root_ account so that we are able to alter the entire Android system as and how we desire.
+
+## Advantages and Disadvantages of rooting.
+
+Now, having complete access to modify the Android system has both pros and cons. Let's discuss them a bit.
+
+### Pros
+
+* Fine grained control over the system - One can fine tune their Android system according to their needs. For example, they can even delete preinstalled applications which they deem to be of no use.
+* Fully backup the Android system - Rooting allows us to access all the system locations, therefore, using it we are able to make backups of our entire system if we want. This can be really beneficial because we can later restore that backup, in case of any mishap, and we will have the system exactly as it was at the time of the backup.
+* Whole new world of software - Many applications available for Android require root to work correctly. Some of these applications improve the system's security, others can provide additional features, and so on.
+
+### Cons
+
+* Higher chance of corrupting the system - If the person who has rooted the device is not careful about what they are doing, they are quite prone to accidently damage the system files and render their device unbootable, also called **bricked**. Although, the system can be reinstalled and everything would be fine usually (**soft bricked**), it is possible that the system is completely rendered unbootable and at that point, the device becomes totally useless (**hard bricked**). Therefore, one must have a modest understanding of what they are doing before actually rooting their device.
+* Warranty getting void - Most (almost all) device manufacturers consider rooting as a void of warranty. So, if your device is under warranty, and you root it, your warranty is basically over. Therefore, **only root your device if you have no problem with your warranty getting void or you warranty is already over**. This is because of the fact that rooting involves modification of system file (boot image to be precise** which violates the warranty.
+
+Once you weigh the pros and cons, and you think that rooting is what you want to do, only then continue with the guide.
+
+> Disclaimer: Do note that I am NOT responsible for your device getting bricked or anything because of you altering it.
+
+## Prerequisites
+
+Now that we have gone through the important information about rooting, it's time to actually root your device! Yiippeee!!
+
+To root your device, there are some prerequisites, however.
+
+* The battery must be at least about 50-70% to be safe. We do NOT want the device to be drained of battery while the process is going on.
+* You must have adb and fastboot installed on your system and it should work correctly. Installation of adb and fastboot are not a part of this guide. Just know that you can download the android platform tools via your distribution's package manager if you are on Linux, or via homebrew if you are on Mac.
+* You must have some active brain cells ;)
+
+We also need some programs. Download the following programs.
+
+* [Twrp](https://twrp.me/oneplus/oneplus6.html) - Choose the mirror, and download both - the img, and the zip file (latest version). The img is required to bootstrap in the twrp menu, while the zip will be used to permanently install twrp. Twrp is a replacement recovery from the stock OnePlus recovery which unlocks a myriad of features, more than the stock recovery. It also allows the use of ADB while in recovery which can be rather useful.
+* [Magisk Installer](https://github.com/topjohnwu/Magisk/releases) - Download the latest release zip from the link. You should also download the uninstaller in case you want to unroot the device. This contains the root program, as well as, the application which you can use to manage it.
+
+## Rooting the device
+
+It's time people! The moment you have all been waiting for! The period of awakening! The hour of paramount importance! It's time to root your device!
+
+* First we need to unlock the developer options in settings. To do that perform the following steps.
+  * Go to settings -> About phone -> Tap `Build Number` 8 times.
+  * It will display `You are now a developer`.
+* Now, we need to enable the `Advanced Reboot` setting.
+  * Go to settings -> Developer options -> Enable the `Advanced reboot` option. It will probably give a warning. Read and accept it.
+* Copy the 2 downloaded files (Magisk and Twrp zip) in your phone's storage.
+* Press and hold the power button to get the power off and reboot options.
+* Click the reboot option.
+* You should now see three options - Reboot, Recovery, Bootloader.
+* Select Bootloader.
+* Connect your device to your computer via USB (if you haven't already).
+* On terminal, the command `fastboot list` should display your device's ID.
+* Go to the directory where you downloaded the Twrp `img` file, in your terminal.
+* From within that directory in your terminal, enter the command: `fastboot boot <twrp img file>`. Of course, replace the \<twrp img file\> part with the actual file name.
+* This should boot your phone in twrp mode. You will see the TeamWin Recovery Project logo, and twrp will start.
+* If you have set a password/pin on your device, you need to enter that now. It will ask for it.
+* You should now see twrp asking if you want to mount system partition. Do not mount it as it is not necessary and is known to create problems. (It will not ask this again anymore.)
+* Once you are in the main menu of twrp, click the `Install` button, and choose the twrp zip. You will have to slide the arrow to install, so do that.
+* Once it is installed, **rejoice**! You now have the twrp installed permanently!!
+* Go back to the main menu of twrp, click `Reboot` -> `Recovery`.
+* It should boot you back to twrp. This twrp is the one installed on your system (although it will look exactly same as before and it will ask for password again).
+* Click `Install` -> Choose the Magisk zip. And install/flash it.
+* Once that is done, go back to the main menu of twrp, and go to `Reboot` -> `System`.
+* Your phone should reboot now, and in your applications drawer, you should see `Magisk Manager` application installed.
+* Open the `Magisk Manager` application. You should now see two check marks beside the `Latest version` and `Installed version` information.
+* **Congratulations**!! You have successfully rooted your phone!!
+
+> **Note**: When you reboot your system, you will see a `System error` message pop up. But don't fret, it is absolutely harmless. As of now, I haven't been able to find a solution to that though.
+
+Next guide will be about how you can utilize this root to block advertisements on your device. No more pesky advertisements (almost all) in your applications or browsers!
